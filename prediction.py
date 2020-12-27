@@ -117,5 +117,5 @@ def forecast(compName):
     forecast = pred_uc.predicted_mean
     print(forecast.head(12))
 
-forecast(compName)
+#forecast(compName)
 
