@@ -1,12 +1,10 @@
-from flask import Flask, request
-import prediction
 import os
 import warnings
 
-import matplotlib.pyplot as plt
-import numpy as np
 import pandas as pd
 from flask import Flask, flash, request, redirect, render_template
+
+import prediction
 
 PEOPLE_FOLDER = os.path.join('static')
 ALLOWED_EXTENSIONS = {'excel', 'csv', 'txt'}
@@ -33,8 +31,11 @@ def hello_world():
 @app.route('/show', methods=['GET', 'POST'])
 def show():
     if request.method == 'GET':
-        prediction.forecastwithoption("AAPL", 30)
-        return  # do_the_login()
+        last_pred_json = prediction.forecastwithoption("MSFT", 30)
+        return_json = {
+            'data': last_pred_json
+        }
+        return return_json
     else:
         return  # show_the_login_form()
 
