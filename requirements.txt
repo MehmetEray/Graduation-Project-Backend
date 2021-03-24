@@ -1,9 +1,12 @@
+appdirs==1.4.4
 asgiref==3.3.1
 certifi==2020.12.5
 chardet==4.0.0
 click==7.1.2
 cycler==0.10.0
+distlib==0.3.1
 Django==3.1.4
+filelock==3.0.12
 Flask==1.1.2
 idna==2.10
 itsdangerous==1.1.0
@@ -17,10 +20,12 @@ numpy==1.19.4
 pandas==1.2.0
 patsy==0.5.1
 Pillow==8.0.1
+pipenv==2020.11.15
 protobuf==3.14.0
 pyparsing==2.4.7
 python-dateutil==2.8.1
 pytz==2020.5
+redis==3.5.3
 requests==2.25.1
 scipy==1.5.4
 seaborn==0.11.1
@@ -28,5 +33,7 @@ six==1.15.0
 sqlparse==0.4.1
 statsmodels==0.12.1
 urllib3==1.26.2
+virtualenv==20.4.2
+virtualenv-clone==0.5.4
 Werkzeug==1.0.1
 yfinance==0.1.55
