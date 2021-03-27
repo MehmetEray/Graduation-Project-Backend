@@ -2,7 +2,7 @@ import os
 import warnings
 
 import pandas as pd
-from flask import Flask, flash, request, redirect, render_template
+from flask import Flask, flash, request, redirect
 
 import prediction
 
@@ -15,8 +15,6 @@ app = Flask(__name__)
 
 app.config['UPLOAD_FOLDER'] = PEOPLE_FOLDER
 
-app = Flask(__name__)
-
 
 def allowed_file(filename):
     return '.' in filename and \
@@ -24,18 +22,20 @@ def allowed_file(filename):
 
 
 @app.route('/')
-def hello_world():
-    return 'Hello World!'
+def home():
+    return 'Graduation Project Backend!'
 
 
-@app.route('/show', methods=['GET', 'POST'])
+@app.route('/show', methods=['GET',"POST"])
 def show():
     if request.method == 'GET':
+
         last_pred_json = prediction.forecastwithoption("MSFT", 30)
         return_json = {
             'data': last_pred_json
         }
         return return_json
+
     else:
         return  # show_the_login_form()
 
