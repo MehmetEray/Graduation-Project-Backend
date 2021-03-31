@@ -26,13 +26,59 @@ def home():
     return 'Graduation Project Backend!'
 
 
-@app.route('/show', methods=['GET',"POST"])
-def show():
+@app.route('/all/<int:number>', methods=['GET', "POST"])
+def showAll(number):
     if request.method == 'GET':
 
-        last_pred_json = prediction.forecastwithoption("MSFT", 30)
+        last_pred_json_microsoft = prediction.forecastwithoption("MSFT", number)
+        last_pred_json_apple = prediction.forecastwithoption("AAPL", number)
+        last_pred_json_amazon = prediction.forecastwithoption("AMZN", number)
         return_json = {
-            'data': last_pred_json
+            'microsoft': last_pred_json_microsoft,
+            'apple': last_pred_json_apple,
+            'amazon': last_pred_json_amazon
+        }
+        return return_json
+
+    else:
+        return  # show_the_login_form()
+
+
+@app.route('/microsoft/<int:number>', methods=['GET', "POST"])
+def showMSFT(number):
+    if request.method == 'GET':
+
+        last_pred_json_microsoft = prediction.forecastwithoption("MSFT", number)
+        return_json = {
+            'microsoft': last_pred_json_microsoft
+        }
+        return return_json
+
+    else:
+        return  # show_the_login_form()
+
+
+@app.route('/apple/<int:number>', methods=['GET', "POST"])
+def showAAPL(number):
+    if request.method == 'GET':
+
+        last_pred_json_apple = prediction.forecastwithoption("AAPL", number)
+        return_json = {
+            'apple': last_pred_json_apple
+        }
+        return return_json
+
+    else:
+        return  # show_the_login_form()
+
+
+@app.route('/amazon/<int:number>', methods=['GET', "POST"])
+def showAMZN(number):
+    if request.method == 'GET':
+
+        last_pred_json_amazon = prediction.forecastwithoption("AMZN", number)
+        return_json = {
+            'amazon': last_pred_json_amazon
         }
         return return_json
 

@@ -72,21 +72,17 @@ def forecastwithoption(compName, day):
                                                 enforce_stationarity=False, enforce_invertibility=False)"""
     print(results.summary().tables[1])
 
-
     pred = results.get_prediction(start=pd.to_datetime(firstDayOfDf), end=pd.to_datetime(lastDayOfDf), dynamic=False)
     pred_ci = pred.conf_int()
-
 
     print(pred_ci)
 
     pred_uc = results.get_forecast(steps=90)
     pred_ci = pred_uc.conf_int()
 
-
-
-
     forecast = pred_uc.predicted_mean
     print(forecast.head(day))
+    forecast = forecast.head(day)
 
     jsonfiles = json.loads(forecast.to_json(orient='records'))
     return jsonfiles
